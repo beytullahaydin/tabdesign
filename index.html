@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Tab</title>
+</head>
+<body>
+    <header>
+        <h1>TabDesign</h1>
+    </header>
+    <div class="container">
+        <input type="checkbox" name="menu-toggle" id="menu-toggle">
+        <section class="nav">
+            <label for="menu-toggle">
+                <span class="material-symbols-outlined">menu_open</span>
+            </label>
+            <ul>
+                <li class="active" data-slug="home">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
+                </li>
+                <li data-slug="about-us">
+                    <span class="material-symbols-outlined">badge</span>
+                    <span>About Us</span>
+                </li>
+                <li data-slug="services">
+                    <span class="material-symbols-outlined">settings</span>
+                    <span>Services</span>
+                </li>
+                <li data-slug="why-us">
+                    <span class="material-symbols-outlined">work</span>
+                    <span>Why Us?</span>
+                </li>
+                <li data-slug="policies">
+                    <span class="material-symbols-outlined">local_police</span>
+                    <span>Policies</span>
+                </li>
+                <li data-slug="contact">
+                    <span class="material-symbols-outlined">call</span>
+                    <span>Contact</span>
+                </li>
+                <li data-slug="dmca">
+                    <span class="material-symbols-outlined ">gavel</span>
+                    <span>DMCA</span>
+                </li>
+            </ul>
+        </section>
+        <section class="nav-content">
+            <section class="active" id="home">
+                Home Content
+            </section>
+            <section id="about-us">
+                About Us Content
+            </section>
+            <section id="services">
+                Services Content
+            </section>
+            <section id="why-us">
+                Why Us Content
+           </section>
+           <section id="policies">
+                Policies Content
+           </section>
+           <section id="contact">
+                Contact Content
+           </section>
+           <section id="dmca">
+                DMCA Content
+           </section>
+        </section>
+    </div>
+    <script>
+        var menuItems = document.querySelectorAll('.nav > ul > li');
+        var activeNavContent = document.querySelectorAll('.nav-content > section');
+        menuItems.forEach(active => {
+            active.onclick = function toggler(){
+                var activeContentName = active.getAttribute("data-slug");
+                menuItems.forEach(non_active => {
+                    non_active.classList.remove("active");
+                });
+                activeNavContent.forEach(activeContent => {
+                    if(activeContent.getAttribute("id") == activeContentName){
+                        activeNavContent.forEach(remove_active => {
+                            remove_active.classList.remove("active");
+                        });
+                        activeContent.classList.add("active");
+                    }
+                });
+                active.classList.add("active");
+            }
+        });
+    </script>
+</body>
+</html>
